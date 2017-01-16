@@ -1,6 +1,5 @@
 <?php
   require_once(dirname(__FILE__).'/../dbmanager.php');
-  require_once 'userTypes.php';
 ?>
 <?php
 class Users{
