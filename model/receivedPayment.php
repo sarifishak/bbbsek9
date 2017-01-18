@@ -63,44 +63,6 @@ CREATE TABLE receivedPayment(
     return $receivedPayment_list;
   }
   
-  
-  function selectAllByCustomerId(){
-    $dbm = new DBManager();
-    $conn = $dbm->getConnection();
-
-    $sql_stmt = "SELECT * FROM receivedPayment WHERE customerId=? order by id desc limit 50";
-    $stmt = $conn->prepare($sql_stmt);
-    $stmt->execute(array($this->customerId));
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $row_count = $stmt->rowCount();
-
-    //create an empty array that will eventually contain the list of users
-    $receivedPayment_list=array();
-
-    //iterate each row in retval
-    //foreach($conn->query($sql_stmt) as $dbfield) {
-    foreach($rows as $dbfield) {
-      //instantiate a user object
-      $receivedPayment = new ReceivedPayment();      
-
-      //initialize fields of user object with the columns retrieved from the query
-      $receivedPayment->id = $dbfield['id'];
-      $receivedPayment->receiptNo = $dbfield['receiptNo'];
-      $receivedPayment->feeFor = $dbfield['feeFor'];
-      $receivedPayment->customerId = $dbfield['customerId'];
-      $receivedPayment->paymentType = $dbfield['paymentType'];
-      $receivedPayment->amountPaid = $dbfield['amountPaid'];
-      $receivedPayment->status = $dbfield['status'];
-      $receivedPayment->createdDate = $dbfield['createdDate'];
-      $receivedPayment->createdId = $dbfield['createdId'];
-      
-      //add the user object in the array
-      $receivedPayment_list[] = $receivedPayment;
-    }
-
-    //return the array
-    return $receivedPayment_list;
-  }
   function selectById(){
   	
     $dbm = new DBManager();

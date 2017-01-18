@@ -170,7 +170,7 @@ CREATE TABLE contacts(
       
       $receivePayment = new ReceivedPayment();
       $receivePayment->customerId = $contact->id;
-      $contact->receivedPaymentList=$receivePayment->selectAllByCustomerId();
+      $contact->receivedPaymentList=$receivePayment->selectByCustomerId();
       
       //add the user object in the array
       $contact_list[] = $contact;
