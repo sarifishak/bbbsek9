@@ -168,7 +168,7 @@ CREATE TABLE contacts(
       $contact->createdDate = $dbfield['createdDate'];
       $contact->createdId = $dbfield['createdId'];
       
-      $receivePayment = ReceivedPayment();
+      $receivePayment = new ReceivedPayment();
       $receivePayment->customerId = $contact->id;
       $contact->receivedPaymentList=$receivePayment->selectAllByCustomerId();
       
