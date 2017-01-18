@@ -48,6 +48,7 @@ CREATE TABLE contacts(
   var $createdDate;
   var $createdId;
   
+  var $receivedPaymentList;
   
   function selectAll(){
     $dbm = new DBManager();
@@ -130,5 +131,53 @@ CREATE TABLE contacts(
     }
 
   }
+  
+  function selectAllWithPayment(){
+    $dbm = new DBManager();
+    $conn = $dbm->getConnection();
+
+    $sql_stmt = "SELECT * FROM contacts order by id desc limit 10";
+
+    //create an empty array that will eventually contain the list of users
+    $contact_list=array();
+
+    //iterate each row in retval
+    foreach($conn->query($sql_stmt) as $dbfield) {
+      //instantiate a user object
+      $contact = new Contacts();      
+
+      //initialize fields of user object with the columns retrieved from the query
+      $contact->id = $dbfield['id'];
+      $contact->mainId = $dbfield['mainId'];
+      $contact->contactTypeId = $dbfield['contactTypeId'];
+      $contact->firstName = $dbfield['firstName'];
+      $contact->lastName = $dbfield['lastName'];
+      $contact->ic = $dbfield['ic'];
+      $contact->noRumah = $dbfield['noRumah'];
+      $contact->jalan = $dbfield['jalan'];
+      $contact->address = $dbfield['address'];
+      $contact->city = $dbfield['city'];
+      $contact->state = $dbfield['state'];
+      $contact->postcode = $dbfield['postcode'];
+      $contact->mobile = $dbfield['mobile'];
+      $contact->office = $dbfield['office'];
+      $contact->home = $dbfield['home'];
+      $contact->fax = $dbfield['fax'];
+      $contact->email = $dbfield['email'];
+      $contact->createdDate = $dbfield['createdDate'];
+      $contact->createdId = $dbfield['createdId'];
+      
+      $receivePayment = ReceivedPayment();
+      $receivePayment->customerId = $contact->id;
+      $contact->receivedPaymentList=$receivePayment->selectAllByCustomerId();
+      
+      //add the user object in the array
+      $contact_list[] = $contact;
+    }
+
+    //return the array
+    return $contact_list;
+  }
+
 }
 ?>
