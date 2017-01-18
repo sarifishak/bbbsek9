@@ -1,5 +1,6 @@
 <?php
-  require_once(dirname(__FILE__).'/../dbmanager.php');  
+  require_once(dirname(__FILE__).'/../dbmanager.php');
+  require_once(dirname(__FILE__).'/receivedPayment.php');
 ?>
 <?php
 class Contacts{
