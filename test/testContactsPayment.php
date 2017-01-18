@@ -34,7 +34,7 @@
         echo '<td>';
             foreach($contact->receivedPaymentList as $receivedPayment) {
                 $paymentDate = date_create($receivedPayment->feeFor);
-                echo '<p>"'.$receivedPayment->receiptNo.'" for '.date_format($paymentDate,"jS F, Y").'</p>';
+                echo '<p>"Receipt '.$receivedPayment->receiptNo.'" for '.date_format($paymentDate,"F, Y").'</p>';
             }
         echo '</td>';
         echo '</tr>';
