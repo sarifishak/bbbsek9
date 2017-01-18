@@ -32,7 +32,7 @@
         echo '<td>'.$contact->lastName.'</td>';
         echo '<td>'.$contact->mobile.'</td>';
         echo '<td>';
-            foreach($contacts->receivedPaymentList as $receivedPayment) {
+            foreach($contact->receivedPaymentList as $receivedPayment) {
                 echo '<p>"'.$receivedPayment->receiptNo.'" for '.$receivedPayment->feeFor.'</p>';
             }
         echo '</td>';
