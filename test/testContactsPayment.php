@@ -1,5 +1,6 @@
 <?php
   require_once(dirname(__FILE__).'/../model/contacts.php');
+  require_once(dirname(__FILE__).'/../model/receivedPayment.php');
 ?>
 <html>
   <head>
@@ -7,28 +8,6 @@
   </head>
   <body>
     <p>Test contact payment page</p>
-
-  var $id;
-  var $mainId;
-  var $contactTypeId;
-  var $firstName;
-  var $lastName;
-  var $ic;
-  var $noRumah;
-  var $jalan;
-  var $address;
-  var $city;
-  var $state;
-  var $postcode;
-  var $mobile;
-  var $office;
-  var $home;
-  var $fax;
-  var $email;
-  var $createdDate;
-  var $createdId;
-  
-    <p>Contents of table Contacts:</p>
     <table border='1'>
       <tr>
         <td>Id</td>
@@ -52,7 +31,11 @@
         echo '<td>'.$contact->firstName.'</td>';
         echo '<td>'.$contact->lastName.'</td>';
         echo '<td>'.$contact->mobile.'</td>';
-        echo '<td>'.$contact->createdId.'</td>';
+        echo '<td>';
+            foreach($contacts->receivedPaymentList as $receivedPayment) {
+                echo '<p>"'.$receivedPayment->receiptNo.'" for '.$receivedPayment->feeFor.'</p>';
+            }
+        echo '</td>';
         echo '</tr>';
       }
     ?>

@@ -3,31 +3,9 @@
 ?>
 <html>
   <head>
-    <title>DB Query PHP Page</title>
+    <title>Contents of table Contacts</title>
   </head>
   <body>
-    <p>The debug page sites</p>
-
-  var $id;
-  var $mainId;
-  var $contactTypeId;
-  var $firstName;
-  var $lastName;
-  var $ic;
-  var $noRumah;
-  var $jalan;
-  var $address;
-  var $city;
-  var $state;
-  var $postcode;
-  var $mobile;
-  var $office;
-  var $home;
-  var $fax;
-  var $email;
-  var $createdDate;
-  var $createdId;
-  
     <p>Contents of table Contacts:</p>
     <table border='1'>
       <tr>
