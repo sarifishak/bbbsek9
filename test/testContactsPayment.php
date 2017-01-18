@@ -33,7 +33,8 @@
         echo '<td>'.$contact->mobile.'</td>';
         echo '<td>';
             foreach($contact->receivedPaymentList as $receivedPayment) {
-                echo '<p>"'.$receivedPayment->receiptNo.'" for '.$receivedPayment->feeFor.'</p>';
+                $paymentDate = date_create($receivedPayment->feeFor);
+                echo '<p>"'.$receivedPayment->receiptNo.'" for '.date_format($paymentDate,"jS F, Y").'</p>';
             }
         echo '</td>';
         echo '</tr>';
