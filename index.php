@@ -27,7 +27,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form method='post'>
+            <form action='login_process.php' method='post'>
               <h1>Login Form</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Username" required="" name="username" />
@@ -36,7 +36,7 @@
                 <input type="password" class="form-control" placeholder="Password" required="" name="password" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="login_process.php" >Log in</a>
+                <input class="btn btn-default submit" type='submit' value='Login'>
                 <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
               </div>
 
