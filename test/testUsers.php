@@ -19,6 +19,8 @@
         <td>Status</td>
         <td>CreatedDate</td>
         <td>CraetedId</td>
+        <td>UserType</td>
+        <td>Default URL</td>
       </tr>
     <?php 
       //refer to user.php for the implementation of the class User 
@@ -36,6 +38,8 @@
         echo '<td>'.$user->status.'</td>';
         echo '<td>'.$user->createdDate.'</td>';
         echo '<td>'.$user->createdId.'</td>';
+        echo '<td>'.$user->userTypeData->userType.'</td>';
+        echo '<td>'.$user->userTypeData->defaultPage.'</td>';
         echo '</tr>';
       }
     ?>

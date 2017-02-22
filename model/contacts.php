@@ -137,13 +137,73 @@ CREATE TABLE contacts(
     $dbm = new DBManager();
     $conn = $dbm->getConnection();
 
-    $sql_stmt = "SELECT * FROM contacts order by id desc limit 10";
+    $sql_stmt = "SELECT * FROM contacts order by id desc limit 400";
 
     //create an empty array that will eventually contain the list of users
     $contact_list=array();
 
     //iterate each row in retval
     foreach($conn->query($sql_stmt) as $dbfield) {
+      //instantiate a user object
+      $contact = new Contacts();      
+
+      //initialize fields of user object with the columns retrieved from the query
+      $contact->id = $dbfield['id'];
+      $contact->mainId = $dbfield['mainId'];
+      $contact->contactTypeId = $dbfield['contactTypeId'];
+      $contact->firstName = $dbfield['firstName'];
+      $contact->lastName = $dbfield['lastName'];
+      $contact->ic = $dbfield['ic'];
+      $contact->noRumah = $dbfield['noRumah'];
+      $contact->jalan = $dbfield['jalan'];
+      $contact->address = $dbfield['address'];
+      $contact->city = $dbfield['city'];
+      $contact->state = $dbfield['state'];
+      $contact->postcode = $dbfield['postcode'];
+      $contact->mobile = $dbfield['mobile'];
+      $contact->office = $dbfield['office'];
+      $contact->home = $dbfield['home'];
+      $contact->fax = $dbfield['fax'];
+      $contact->email = $dbfield['email'];
+      $contact->createdDate = $dbfield['createdDate'];
+      $contact->createdId = $dbfield['createdId'];
+      
+      $receivePayment = new ReceivedPayment();
+      $receivePayment->customerId = $contact->id;
+      $contact->receivedPaymentList=$receivePayment->selectByCustomerId();
+      
+      //add the user object in the array
+      $contact_list[] = $contact;
+    }
+
+    //return the array
+    return $contact_list;
+  }
+
+  function searchAllWithPayment($searchText){
+    $dbm = new DBManager();
+    $conn = $dbm->getConnection();
+
+    $sql_stmt = "SELECT * FROM contacts WHERE firstname LIKE ? OR lastName LIKE ? OR jalan LIKE ? order by id desc limit 400";
+
+    //create an empty array that will eventually contain the list of users
+    $contact_list=array();
+    
+    $stmt = $conn->prepare($sql_stmt);
+    //$stmt->execute(array($searchText));
+    //$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //$row_count = $stmt->rowCount();
+    
+    $stmt->bindValue(1, "%$searchText%", PDO::PARAM_STR);
+    $stmt->bindValue(2, "%$searchText%", PDO::PARAM_STR);
+    $stmt->bindValue(3, "%$searchText%", PDO::PARAM_STR);
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $row_count = $stmt->rowCount();
+
+    //iterate each row in retval
+    //foreach($conn->query($sql_stmt) as $dbfield) {
+    foreach($rows as $dbfield) {
       //instantiate a user object
       $contact = new Contacts();      
 

@@ -1,5 +1,6 @@
 <?php
   require_once(dirname(__FILE__).'/../dbmanager.php');
+  require_once('userTypes.php');
 ?>
 <?php
 class Users{
@@ -48,7 +49,7 @@ class Users{
         $userTypes = new UserTypes();
         $userTypes->id = $this->userType;
         $userTypes->foundRecord = false;
-        if ($userTypes->selectById()){
+        if ($userTypes->selectByUserTypeId()){
             $this->userTypeData=$userTypes;
         }
     }
@@ -81,6 +82,13 @@ class Users{
         $user->status = $dbfield['status'];
         $user->createdDate = $dbfield['createdDate'];
         $user->createdId = $dbfield['createdId'];
+        
+        $userTypes = new UserTypes();
+        $userTypes->id = $user->userType;
+        $userTypes->foundRecord = false;
+        if ($userTypes->selectByUserTypeId()){
+            $user->userTypeData=$userTypes;
+        }
         
         //add the user object in the array
         $user_list[] = $user;

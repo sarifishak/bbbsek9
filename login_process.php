@@ -12,13 +12,14 @@
     session_start();
     $_SESSION['current_user']=$user;
     echo "Correct user!! yes!!!<br>";
-    //header($user->userTypeData->defaultPage);
+    echo "Default page is ".$user->userTypeData->defaultPage;
+    header($user->userTypeData->defaultPage);
     exit;
   }else{//invalid username and password
     echo "Username given =".$user->username.".<br>";
     echo "password given =".$user->password.".<br>";
-    echo "Invalid username/password.  Click <a href='login.php'>[here]</a> to login again.<br>";
+    echo "Invalid username/password.  Click <a href='index.php'>[here]</a> to login again.<br>";
     echo "<br>";
-    echo "You may also click <a href='debug.php'>[here]</a> to see the list of usernames and passwords.<br>";
+    //echo "You may also click <a href='debug.php'>[here]</a> to see the list of usernames and passwords.<br>";
   }
 ?>
