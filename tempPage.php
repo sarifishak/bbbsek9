@@ -4,6 +4,8 @@
   
   $searchtxt = $_REQUEST['searchtxt'];
   
+  $contacts = new Contacts();
+  
   if(strlen($searchtxt) > 0)
       $contacts_list = $contacts->searchAllWithPayment($searchtxt);
   else 
