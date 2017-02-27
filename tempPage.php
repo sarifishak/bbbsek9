@@ -1,6 +1,6 @@
 <?php
-  require_once(dirname(__FILE__).'/../model/contacts.php');
-  require_once(dirname(__FILE__).'/../model/receivedPayment.php');
+  require_once(dirname(__FILE__).'/model/contacts.php');
+  require_once(dirname(__FILE__).'/model/receivedPayment.php');
   
   $searchtxt = $_REQUEST['searchtxt'];
   
