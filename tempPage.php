@@ -17,7 +17,7 @@
   </head>
   <body>
     <p>Temp contact payment page</p>
-    <form action='tempPage.php' method='post'>
+    <form action='<?php echo dirname(__FILE__) ?>'/tempPage.php' method='post'>
      <input type="text" class="form-control" placeholder="Insert search txt" name="searchtxt">
      <button type="submit" class="btn btn-primary">Submit</button>
     </form>

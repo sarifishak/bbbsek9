@@ -137,7 +137,7 @@ CREATE TABLE contacts(
     $dbm = new DBManager();
     $conn = $dbm->getConnection();
 
-    $sql_stmt = "SELECT * FROM contacts order by id desc limit 400";
+    $sql_stmt = "SELECT * FROM contacts order by id desc limit 100";
 
     //create an empty array that will eventually contain the list of users
     $contact_list=array();
