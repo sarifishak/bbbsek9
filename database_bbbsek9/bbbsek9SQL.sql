@@ -1,44 +1,23 @@
 
 USE bbbsek9;
 
-DROP TABLE IF EXISTS quotations;
-CREATE TABLE quotations(
+DROP TABLE IF EXISTS residents;
+CREATE TABLE residents(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    quotationNo int NOT NULL DEFAULT '1',
-    chargeDays int default 0,
-    customerId int,
-    patientId int,
-    chargeMode  VARCHAR(50) default 'Daily',
-    feeFor  VARCHAR(50),
-    physiotherapy VARCHAR(10) default 'No',
-    nurseVisit VARCHAR(10) default 'No',
-    doktorVisit VARCHAR(10) default 'No',
-    quotationDate DATE,
-    hourPerDay int,
-    dayPerWeek int,
-    basicCharge double,
-    startTimeDaily TIME,
-    endTimeDaily TIME,
-    startDate DATE,
-    endDate DATE,
-    mileage double default 0,
-    adminFee double default 0,
-    additionalCharge double default 0,
-    gst double default 0,
-    discount double default 0,
-    totalAmount double default 0,
-    totalPaid double default 0,
-    amountDue double default 0,
-    statusPaid int,
+    noahli VARCHAR(10) default 'TIADA',
+    norumah VARCHAR(10) default '',
+	jalan VARCHAR(50) default '',
+    name VARCHAR(100) default '',
+    kadinduk1 VARCHAR(20) default '',
+	kadinduk2 VARCHAR(20) default '',
+    no_hp1  VARCHAR(50) default '',
+    no_hp2  VARCHAR(50) default '',
+    email1  VARCHAR(100) default '',
+    email2  VARCHAR(100) default '',
     status int DEFAULT 0,
     createdDate DATETIME ,
     createdId int
 );
-
-ALTER TABLE `quotations` ADD `locumFees` VARCHAR(100) NOT NULL AFTER `status`;
-ALTER TABLE `quotations` ADD `subTotalAmount` double default 0 AFTER `totalAmount`;
-ALTER TABLE `quotations` ADD `reasonAdditionalCharge` VARCHAR(100) NOT NULL DEFAULT 'Work On Weekend' AFTER `locumFees`;
-ALTER TABLE `quotations` ADD `introducer` VARCHAR(100) NOT NULL DEFAULT 'Google' AFTER `reasonAdditionalCharge`;
 
 
 CREATE TABLE usertypes(
@@ -66,7 +45,7 @@ CREATE TABLE users(
 
 );
 
-INSERT INTO users(username,password,lastname,firstname,userType,status,createdDate,createdId) VALUES ('shima',md5('shima'),'Samad','Shima',2,1,Now(),0);
+INSERT INTO users(username,password,lastname,firstname,userType,status,createdDate,createdId) VALUES ('sarif',md5('sarif'),'Ishak','Sarif',2,1,Now(),0);
 
 CREATE TABLE contacts(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -89,7 +68,7 @@ CREATE TABLE contacts(
 
 ALTER TABLE `contacts` ADD `contactCode` VARCHAR(100) NOT NULL AFTER `id`;
 
-INSERT INTO contacts(contactTypeId,contactCode,firstName,lastName,ic,address,city,state,postcode,mobile,office,home,fax,email,createdDate,createdId) VALUES (1,'CA0123','shima','samad','34343434343','addd','city','state','32232','01434334','034343434','03675644','0355422','email@com',Now(),1);
+INSERT INTO contacts(contactTypeId,contactCode,firstName,lastName,ic,address,city,state,postcode,mobile,office,home,fax,email,createdDate,createdId) VALUES (1,'CA0123','sarif','ishak','34343434343','addd','city','state','32232','01434334','034343434','03675644','0355422','email@com',Now(),1);
 
 
 
