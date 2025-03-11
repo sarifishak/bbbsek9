@@ -19,7 +19,7 @@ CREATE TABLE residents(
     createdId int
 );
 
-
+DROP TABLE IF EXISTS usertypes;
 CREATE TABLE usertypes(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,	
     userType VARCHAR(100) NOT NULL,
@@ -30,7 +30,7 @@ INSERT INTO usertypes(userType,defaultPage) VALUES('admin','home.php');
 INSERT INTO usertypes(userType,defaultPage) VALUES('user','marketing.php');
 
 
-
+DROP TABLE IF EXISTS users;
 CREATE TABLE users(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,	
     username VARCHAR(100) NOT NULL,
@@ -47,6 +47,7 @@ CREATE TABLE users(
 
 INSERT INTO users(username,password,lastname,firstname,userType,status,createdDate,createdId) VALUES ('sarif',md5('sarif'),'Ishak','Sarif',2,1,Now(),0);
 
+DROP TABLE IF EXISTS contacts;
 CREATE TABLE contacts(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     contactTypeId int,	
@@ -71,7 +72,7 @@ ALTER TABLE `contacts` ADD `contactCode` VARCHAR(100) NOT NULL AFTER `id`;
 INSERT INTO contacts(contactTypeId,contactCode,firstName,lastName,ic,address,city,state,postcode,mobile,office,home,fax,email,createdDate,createdId) VALUES (1,'CA0123','sarif','ishak','34343434343','addd','city','state','32232','01434334','034343434','03675644','0355422','email@com',Now(),1);
 
 
-
+DROP TABLE IF EXISTS contacttypes;
 CREATE TABLE contacttypes(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,	
     contactType VARCHAR(100) NOT NULL
