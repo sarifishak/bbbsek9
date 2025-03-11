@@ -19,6 +19,7 @@ CREATE TABLE residents(
     createdId int
 );
 
+
 DROP TABLE IF EXISTS usertypes;
 CREATE TABLE usertypes(
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,	
